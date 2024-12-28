@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Làm bài tập</title>
+    <title>Làm bài tập</title>
     <style>
         body {
             font-family: sans-serif;
@@ -53,7 +53,7 @@
         }
 
         #chatbox p.gemini::before {
-            content: "Gemini";
+            content: "Google"; /* Thay đổi từ Gemini thành Google */
             display: block;
             font-weight: bold;
             margin-bottom: 5px;
@@ -76,7 +76,7 @@
 
         .preview {
             text-align: center;
-            margin-top: 10px;
+            margin: 10px 0;
         }
 
         .preview img {
@@ -88,48 +88,57 @@
 
         form {
             width: 80%;
-            margin: 0 auto;
+            margin: 20px auto;
             display: flex;
-            flex-wrap: wrap; /* Cho phép các phần tử xuống dòng */
-            align-items: center; /* Căn giữa theo chiều dọc */
+            flex-direction: column; /* Thay đổi hướng flexbox thành column */
+            align-items: center;
+        }
+
+        .input-group {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            margin-bottom: 10px;
         }
 
         input[type="text"] {
-            width: 70%; /* Điều chỉnh độ rộng ô nhập tin nhắn */
-            padding: 10px;
+            flex-grow: 1; /* Ô nhập tin nhắn chiếm phần lớn không gian */
+            padding: 30px 10px;
             border: 1px solid #ccc;
-            border-radius: 5px;
+            border-radius: 5px 0 0 5px;
             font-size: 16px;
-            margin-bottom: 10px; /* Thêm khoảng cách với ô file */
-        }
-
-        input[type="file"] {
-            width: 30%; /* Điều chỉnh độ rộng ô chọn file */
-            margin-bottom: 10px; /* Thêm khoảng cách với nút gửi */
         }
 
         button[type="submit"] {
-            width: 100%; /* Nút gửi chiếm toàn bộ chiều rộng form */
-            padding: 10px;
+            width: auto; /* Thu hẹp chiều rộng nút gửi */
+            padding: 30px 20px;
             background-color: #4285f4;
             color: #fff;
             border: none;
-            border-radius: 5px;
+            border-radius: 0 5px 5px 0;
             cursor: pointer;
             font-size: 16px;
+            margin-left: -1px;
+        }
+
+        input[type="file"] {
+            width: 100%; /* Ô chọn file chiếm toàn bộ chiều rộng form */
+            margin-top: 10px; /* Đưa ô file xuống dưới */
         }
     </style>
 </head>
 <body>
-    <h1>Làm bài tập</h1>
+    <h1>Làm bài tập</h1>
 
     <div id="chatbox">
     </div>
 
     <form id="messageForm" enctype="multipart/form-data">
-        <input type="text" name="message" id="message" placeholder="Nhập tin nhắn của bạn...">
+        <div class="input-group">
+          <input type="text" name="message" id="message" placeholder="Nhập tin nhắn của bạn...">
+          <button type="submit">Gửi</button>
+        </div>
         <input type="file" name="image" id="image" accept="image/*">
-        <button type="submit">Gửi</button>
         <div class="preview" id="imagePreview"></div>
     </form>
 
